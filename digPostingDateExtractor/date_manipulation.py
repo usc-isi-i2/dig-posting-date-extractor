@@ -566,9 +566,3 @@ class DataManipulation(object):
     @staticmethod
     def get_current_time():
         return datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-
-
-if __name__ == '__main__':
-   
-    print DataManipulation.date_created("online: Jul 07, 00:44 \n  ", None,
-                          'date')
