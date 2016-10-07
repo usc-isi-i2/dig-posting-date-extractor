@@ -24,7 +24,7 @@ class TestDrugUseExtractorMethods(unittest.TestCase):
         extractor = PostingDateExtractor().set_metadata({'extractor': 'posting_date'})
         extractor_processor = ExtractorProcessor().set_input_fields(['content']).set_output_field('extracted').set_extractor(extractor)
         updated_doc = extractor_processor.extract(doc)
-        self.assertEqual(updated_doc['extracted']['value'], '2016-07-07')
+        self.assertEqual(updated_doc['extracted'][0]['value'], '2016-07-07')
 
     
 
