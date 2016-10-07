@@ -288,8 +288,6 @@ class DataManipulation(object):
         """
         default_time can be None
         """
-        # print "default_time ",
-        # print default_time
         str = str.lower().strip()
         tuples = re.findall(DataManipulation.adultservice_regex_day, str)
         if (len(tuples) > 0):
@@ -347,7 +345,6 @@ class DataManipulation(object):
                 return last_ditch_parse
             else:
                 reparse_datetime = datetime.datetime.strptime(last_ditch_parse, "%Y-%m-%dT%H:%M:%S")
-                # reparse_datetime = dateutil.parser.parse(last_ditch_parse)
                 return reparse_datetime.date().isoformat()
 
         if default_time and default_time != '':
