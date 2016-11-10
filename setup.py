@@ -6,18 +6,17 @@
 
 
 from distutils.core import setup
-from setuptools import Extension,find_packages
-from os import path
+from setuptools import find_packages
 
 setup(
-    name = 'digPostingDateExtractor',
-    version = '0.1.0',
-    description = 'digPostingDateExtractor',
-    author = 'Lingzhe Teng',
-    author_email = 'zwein27@gmail.com',
-    url = 'https://github.com/usc-isi-i2/dig-posting-date-extractor',
-    download_url = 'https://github.com/usc-isi-i2/dig-posting-date-extractor',
-    packages = find_packages(),
-    keywords = ['posting', 'date', 'extractor'],
+    name='digPostingDateExtractor',
+    version='0.3.0',
+    description='digPostingDateExtractor',
+    author='Lingzhe Teng',
+    author_email='zwein27@gmail.com',
+    url='https://github.com/usc-isi-i2/dig-posting-date-extractor',
+    download_url='https://github.com/usc-isi-i2/dig-posting-date-extractor',
+    packages=find_packages(),
+    keywords=['posting', 'date', 'extractor'],
     install_requires=['digExtractor']
-    )
+)

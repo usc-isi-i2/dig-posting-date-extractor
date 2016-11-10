@@ -4,10 +4,10 @@
 # @Last Modified by:   ZwEin
 # @Last Modified time: 2016-10-05 10:39:44
 
-import copy 
-import types
+import copy
 from digExtractor.extractor import Extractor
 from date_manipulation import DataManipulation
+
 
 class PostingDateExtractor(Extractor):
 
@@ -17,7 +17,7 @@ class PostingDateExtractor(Extractor):
     def extract(self, doc):
         if 'text' in doc:
             return DataManipulation.date_created(doc['text'], None,
-                          'date')
+                                                 'date')
         return None
 
     def get_metadata(self):

@@ -1,5 +1,3 @@
-__author__ = 'amandeep'
-
 import calendar
 import re
 from datetime import datetime
@@ -145,15 +143,16 @@ class DataManipulation(object):
         # "december": 12
     }
 
-
     months_long_regex = r"|".join(months_dict.keys())
     # Adult service regex
     # Thursday, September 4, 2014, 4:57 PM PST
-    adultservice_regex_day = r"(" + months_long_regex + r")\s+(\d\d?),\s+(\d\d\d\d)"
+    adultservice_regex_day = r"(" + months_long_regex + \
+        r")\s+(\d\d?),\s+(\d\d\d\d)"
 
     # Citiguide regex
     # September 9, 2012  10:29 AM
-    citiguide_regex_day = r"(" + months_long_regex +r")\s+(\d\d?),\s+(\d\d\d\d)"
+    citiguide_regex_day = r"(" + months_long_regex + \
+        r")\s+(\d\d?),\s+(\d\d\d\d)"
 
     # anunico regex
     # Domingo, 20
@@ -168,16 +167,20 @@ class DataManipulation(object):
     # backpage regex
     # saturday, 1 february 2014, 12:03 am
     # friday, december 6, 2013 3:16 pm
-    backpage1_regex_day = r"(\d\d?)\s+(" + months_long_regex + r")\s+(\d\d\d\d)"
-    backpage2_regex_day = r"(" + months_long_regex + r")\s+(\d\d?),\s+(\d\d\d\d)"
+    backpage1_regex_day = r"(\d\d?)\s+(" + \
+        months_long_regex + r")\s+(\d\d\d\d)"
+    backpage2_regex_day = r"(" + months_long_regex + \
+        r")\s+(\d\d?),\s+(\d\d\d\d)"
 
     # myproviderguide regex
     # wednesday, april 16th, 2014
-    myproviderguide_regex_day = r"(" + months_long_regex + r")\s+(\d\d?)\w+,\s+(\d\d\d\d)"
+    myproviderguide_regex_day = r"(" + months_long_regex + \
+        r")\s+(\d\d?)\w+,\s+(\d\d\d\d)"
 
     # sipsap regex
     # wednesday, april 16th, 2014
-    sipsap_regex_day = r"(" + months_long_regex + r")\s+(\d\d?)\w+\s+(\d\d\d\d)"
+    sipsap_regex_day = r"(" + months_long_regex + \
+        r")\s+(\d\d?)\w+\s+(\d\d\d\d)"
 
     # 9 days ago
     days_relative_regex = r'(\b\d\d?)\s+days?\s+ago\b'
@@ -188,11 +191,13 @@ class DataManipulation(object):
     # spanish backpage regex
     #  lunes, 27 de junio de 2016, 14:07
     # lunes, 4 de julio de 2016, 9:01
-    backpage3_regex_day = r"(\d\d?)\s+de\s+(" + months_long_regex + r")\s+de\s+(\d\d\d\d)"
+    backpage3_regex_day = r"(\d\d?)\s+de\s+(" + \
+        months_long_regex + r")\s+de\s+(\d\d\d\d)"
 
     # european backpahe dates
     # torsdag, 7. juli 2016, 12:01
-    backpage4_regex_day = r"(\d\d?)\.\s+(" + months_long_regex + r")\s+(\d\d\d\d)"
+    backpage4_regex_day = r"(\d\d?)\.\s+(" + \
+        months_long_regex + r")\s+(\d\d\d\d)"
 
     @staticmethod
     def make_iso(yyyy, mm, dd, format='time'):
@@ -282,7 +287,6 @@ class DataManipulation(object):
 
         return ''
 
-
     @staticmethod
     def posttime_date(str, default_time, format='time'):
         """
@@ -341,14 +345,15 @@ class DataManipulation(object):
 
         last_ditch_parse = DataManipulation.iso8601date(str, format)
         if last_ditch_parse:
-            if format=='time':
+            if format == 'time':
                 return last_ditch_parse
             else:
-                reparse_datetime = datetime.datetime.strptime(last_ditch_parse, "%Y-%m-%dT%H:%M:%S")
+                reparse_datetime = datetime.datetime.strptime(
+                    last_ditch_parse, "%Y-%m-%dT%H:%M:%S")
                 return reparse_datetime.date().isoformat()
 
         if default_time and default_time != '':
-            if default_time > datetime(2000,1,1):
+            if default_time > datetime(2000, 1, 1):
                 if format == 'time':
                     return default_time.isoformat()
                 else:
@@ -376,9 +381,10 @@ class DataManipulation(object):
             pass
         parsed_date = DataManipulation.posttime_date(posttime, None, format)
         if parsed_date == '':
-            parsed_date = DataManipulation.extract_relative_date(posttime, default_time, format)
+            parsed_date = DataManipulation.extract_relative_date(
+                posttime, default_time, format)
         return parsed_date
-    
+
     @staticmethod
     def iso8601date(date, date_format=None):
         """Convert a date to ISO8601 date format
@@ -510,7 +516,6 @@ class DataManipulation(object):
         # If all else fails, return empty
         return ''
 
-
     @staticmethod
     def translate_date(string, in_format, out_format):
         """Convert a date to ISO8601 date format without time"""
@@ -519,7 +524,6 @@ class DataManipulation(object):
         except Exception:
             pass
         return ''
-
 
     @staticmethod
     def conver_time_to_epoch(date, format=None):
@@ -535,7 +539,6 @@ class DataManipulation(object):
         except:
             pass
         return ''
-
 
     @staticmethod
     def epoch_to_datetime(timestamp):
@@ -558,7 +561,6 @@ class DataManipulation(object):
         if iso_date:
             return iso_date[0:4]
         return ''
-
 
     @staticmethod
     def get_current_time():
