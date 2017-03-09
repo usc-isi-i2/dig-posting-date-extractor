@@ -210,7 +210,7 @@ class DataManipulation(object):
             month = int(DataManipulation.months_dict[mm])
             day = int(dd)
             year = int(yyyy)
-            if year < 2008 or year > 2016:
+            if year < 2008 or year > 2019:
                 return ''
             if format == 'time':
                 return datetime(year, month, day).isoformat()
