@@ -4,6 +4,7 @@ from datetime import datetime
 from datetime import date
 from datetime import timedelta
 from time import mktime, gmtime
+import dateparser
 
 
 class DataManipulation(object):
@@ -348,7 +349,7 @@ class DataManipulation(object):
             if format == 'time':
                 return last_ditch_parse
             else:
-                reparse_datetime = datetime.datetime.strptime(
+                reparse_datetime = datetime.strptime(
                     last_ditch_parse, "%Y-%m-%dT%H:%M:%S")
                 return reparse_datetime.date().isoformat()
 
@@ -374,6 +375,13 @@ class DataManipulation(object):
         :type crawl_time: string
         :return: if posttime can be parsed, then return it, otherwise return the crawl_time
         """
+
+        # FIRST TRY TO PARSE IT USING dateparser
+        try:
+            return dateparser.parse(posttime).isoformat()
+        except:
+            pass
+
         default_time = None
         try:
             default_time = datetime.strptime(crawl_time, "%Y-%m-%dT%H:%M:%S")
