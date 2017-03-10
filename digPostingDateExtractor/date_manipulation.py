@@ -377,10 +377,10 @@ class DataManipulation(object):
         """
 
         # FIRST TRY TO PARSE IT USING dateparser
-        try:
-            return dateparser.parse(posttime).isoformat()
-        except:
-            pass
+        # try:
+        #     return dateparser.parse(posttime).isoformat()
+        # except:
+        #     pass
 
         default_time = None
         try:
