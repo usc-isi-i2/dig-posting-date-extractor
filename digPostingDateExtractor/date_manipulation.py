@@ -4,8 +4,6 @@ from datetime import datetime
 from datetime import date
 from datetime import timedelta
 from time import mktime, gmtime
-import dateparser
-
 
 class DataManipulation(object):
     def __init__(self):
